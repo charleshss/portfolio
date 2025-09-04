@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+<<<<<<< HEAD
 @theme {
   --color-border: var(--border);
   --color-background: var(--background);
@@ -169,3 +170,8 @@
   padding: 0;
   text-align: center;
 }
+=======
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+>>>>>>> 18cef6a (chore: add import in index.css)
