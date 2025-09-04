@@ -1,10 +1,14 @@
-import './App.css'
-
 function App() {
   return (
-    <div className="App">
-      <h1>Charles Suddens-Spiers</h1>
-      <p>Portfolio Coming Soon...</p>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-5xl font-bold text-gray-900 mb-4">
+          Charlie Suddens-Spiers
+        </h1>
+        <p className="text-xl text-gray-600 mb-8">
+          Portfolio Coming Soon...
+        </p>
+      </div>
     </div>
   )
 }
