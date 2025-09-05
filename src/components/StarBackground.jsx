@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-// id, size, x, y, opacity, animationDuration
-// id, size, x, y, delay, animationDuration
+// star -> id, size, x, y, opacity, animationDuration
+// meteor -> id, size, x, y, delay, animationDuration
 
 export const StarBackground = () => {
     const [stars, setStars] = useState([]);
