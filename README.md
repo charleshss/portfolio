@@ -1,12 +1,61 @@
-# React + Vite
+## 📚 Learning Journey
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This portfolio is being built following the tutorial: [**"Build a BEAUTIFUL Portfolio Website with React.js and TailwindCSS"**](https://youtube.com/watch?v=ifOJ0R5UQOc) by PedroTech.
 
-Currently, two official plugins are available:
+### Why This Tutorial?
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I chose this tutorial to:
 
-## Expanding the ESLint configuration
+- Refresh my React.js skills after completing my MSci in Computer Science
+- Relearn Tailwind CSS, which I've used before but needed a refresher on
+- Learn modern portfolio design patterns and best practices
+- Build a professional web presence to showcase my projects and skills
+- Practice implementing responsive, accessible web design
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### What I'm Learning/Reinforcing:
+
+#### Technical Skills:
+
+- **React.js with Vite** - Modern build tooling and development workflow
+- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
+- **Component-Based Architecture** - Creating reusable, modular components
+- **Responsive Design** - Mobile-first approach using Tailwind's breakpoint system
+- **CSS Custom Properties** - Theme management with CSS variables for dark/light modes
+- **EmailJS Integration** - Implementing contact forms without a backend
+- **GitHub Pages Deployment** - CI/CD workflow for static site hosting
+
+#### Best Practices:
+
+- Git version control with meaningful commits following conventional commit standards
+- Project structure and organization
+- Performance optimization techniques
+- Accessibility considerations
+- Modern JavaScript (ES6+) patterns
+
+### Customizations & Improvements:
+
+While following the tutorial structure, I'm making it my own by:
+
+- Adapting the content to highlight my specific projects and experience
+- Implementing custom color schemes and design choices
+- Adding additional features and sections relevant to my background
+- Ensuring proper documentation and code comments
+- Following industry-standard Git workflows with proper branching strategies
+
+### Tutorial Resources:
+
+- **Video Tutorial**: [YouTube Link](https://youtube.com/watch?v=ifOJ0R5UQOc)
+- **Original Code**: [GitHub Repository](https://github.com/machadop1407/beautiful-react-tailwind-portfolio)
+- **Creator**: PedroTech (Pedro Machado)
+
+---
+
+## 🎯 Project Goals
+
+Beyond following the tutorial, my goals for this project include:
+
+1. Creating a memorable first impression for potential employers and collaborators
+2. Demonstrating proficiency in modern web development technologies
+3. Showcasing my projects in an interactive and engaging way
+4. Building a maintainable codebase that I can easily update as I grow
+5. Learning and implementing web development best practices

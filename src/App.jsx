@@ -1,15 +1,17 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
+
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-5xl font-bold text-gray-900 mb-4">
-          Charlie Suddens-Spiers
-        </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Portfolio Coming Soon...
-        </p>
-      </div>
-    </div>
+    <>
+    <BrowserRouter>
+      <Routes>
+        <Route index element={<Home />}/>
+        <Route path="*" element={<NotFound/>} />
+      </Routes>
+    </BrowserRouter>
+    </>
   )
 }
 
