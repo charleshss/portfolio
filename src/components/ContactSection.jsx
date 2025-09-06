@@ -2,11 +2,8 @@ import {
     Linkedin,
     Mail,
     MapPin,
-    Send,
     Github,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
 
 export const ContactSection = () => {
 
