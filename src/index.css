@@ -120,6 +120,7 @@
     --background: #05060D;
     --foreground: #E2E8F0;
     --card: #0A0C19;
+
     --primary: #FB923C;
     --primary-foreground: #05060D;
     --border: #222A3A;
@@ -199,7 +200,7 @@
 
 @utility cloud-group {
   will-change: transform, opacity;
-}
+
 
 #root {
   max-width: 100%;
