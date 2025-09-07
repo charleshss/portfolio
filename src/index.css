@@ -78,19 +78,22 @@
     --background: #FAFBFC;
     --foreground: #0F172A;
     --card: #FFFFFF;
-    --primary: #3B82F6;  /* Blue for light mode */
+    --primary: #3B82F6;              /* Blue for light mode */
     --primary-foreground: #FAFBFC;
     --border: #E2E8F0;
+    --glow: rgba(59, 130, 246, 0.5); /* Blue glow for light mode */
   }
   
   .dark {
     --background: #05060D;
     --foreground: #E2E8F0;
     --card: #0A0C19;
-    --primary: #FB923C;  /* Orange for dark mode */
+    --primary: #FB923C;              /* Orange for dark mode */
     --primary-foreground: #05060D;
     --border: #222A3A;
+    --glow: rgba(251, 146, 60, 0.5); /* Orange glow for dark mode */
   }
+  
 
   * {
     @apply border-border;
@@ -133,7 +136,7 @@
 
 @utility text-glow {
   @apply relative;
-  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+  text-shadow: 0 0 10px var(--glow);
 }
 
 @utility card-hover {
@@ -149,7 +152,7 @@
 
 @utility cosmic-button {
   @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium 
-         transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)]
+         transition-all duration-300 hover:shadow-[0_0_10px_var(--glow)]
          hover:scale-105 active:scale-95;
 }
 
