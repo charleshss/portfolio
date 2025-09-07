@@ -72,6 +72,7 @@ export const StarBackground = () => {
                         top: star.y + "%",
                         opacity: star.opacity,
                         animationDuration: star.animationDuration + "s",
+                        animationDelay: `${Math.random() * 3}s`
                     }}
                 />
             ))}

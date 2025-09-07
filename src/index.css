@@ -78,17 +78,17 @@
     --background: #FAFBFC;
     --foreground: #0F172A;
     --card: #FFFFFF;
-    --primary: #7C7FD8;
+    --primary: #3B82F6;  /* Blue for light mode */
     --primary-foreground: #FAFBFC;
     --border: #E2E8F0;
   }
-
+  
   .dark {
     --background: #05060D;
     --foreground: #E2E8F0;
     --card: #0A0C19;
-    --primary: #9196E8;
-    --primary-foreground: #E2E8F0;
+    --primary: #FB923C;  /* Orange for dark mode */
+    --primary-foreground: #05060D;
     --border: #222A3A;
   }
 
@@ -153,14 +153,13 @@
          hover:scale-105 active:scale-95;
 }
 
-@utility star {
-  @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+@utility star { 
+  @apply absolute rounded-full bg-white; will-change: transform, 
+  opacity; box-shadow: 0 0 10px 2px rgba(255,255,255,.4); 
 }
-
-@utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+@utility meteor { 
+  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full; 
+  will-change: transform, opacity; box-shadow: 0 0 10px 5px rgba(255,255,255,.3); 
 }
 
 #root {
