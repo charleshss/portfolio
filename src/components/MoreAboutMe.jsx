@@ -1,34 +1,66 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Play, Pause } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const sections = [
-    {
-        title: "My Journey into Tech",
-        description: "Starting from building my first website at 14, technology has always been my way of solving problems. What began as curiosity about how things work evolved into a passion for creating solutions that make a difference.",
-        image: "/about/journey.jpg"
-    },
-    {
-        title: "Beyond the Code",
-        description: "When I'm not debugging or learning new frameworks, you'll find me exploring London's food markets, getting lost in strategy games, or planning my next travel adventure. Balance keeps creativity flowing.",
-        image: "/about/hobbies.jpg"
-    },
-    {
-        title: "What Drives Me",
-        description: "I believe technology should empower everyone. My experience with assistive technology has shaped my approach to development - always considering accessibility, usability, and real-world impact.",
-        image: "/about/motivation.jpg"
-    }
-];
 
 export const MoreAboutMe = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [playingVideo, setPlayingVideo] = useState(null);
+
+    const sections = [
+        {
+            title: "What Drives Me",
+            description:
+                "My family, friends and loved ones have always supported my journey, and without them I could not have achieved any of this. I will always be grateful to them all.",
+            media: "me/family.jpg",
+            type: "image",
+        },
+        {
+            title: "Beyond the Code",
+            description:
+                "When I'm not debugging or learning new skills, you'll often find me gaming and unwinding with friends online, letting the world go by.",
+            media: "me/gaming.jpg",
+            type: "image",
+        },
+        {
+            title: "I Could Never Get Tired of This",
+            description:
+                "Another passion of mine is golf – one of the most frustrating yet rewarding sports. What fascinates me most is not only the nature you get to experience, but also the fact that even for the best players no two shots are ever the same. It is a never-ending game of problem-solving.",
+            media: "me/golf.mp4",
+            type: "video",
+        },
+        {
+            title: "Exploring My Environment",
+            description:
+                "Like a good AI agent, I enjoy exploring the world and experiencing different cultures, foods, and the excitement that travel has to offer.",
+            media: "me/travel.jpg",
+            type: "image",
+        },
+        {
+            title: "My Safe Space",
+            description:
+                "I have always loved the mountains, not just for their hikes and their beauty but for their sense of peace. When they are blanketed in snow and I have two skis under my feet, that is where I feel most at home – carving and exploring through this vast landscape.",
+            media: "me/ski.mp4",
+            type: "video",
+        },
+    ];
+
+
+    const handleVideoClick = (videoElement, index) => {
+        if (videoElement.paused) {
+            videoElement.play();
+            setPlayingVideo(index);
+        } else {
+            videoElement.pause();
+            setPlayingVideo(null);
+        }
+    };
 
     return (
         <section className="w-full mt-12">
             {/* Toggle Button */}
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="mx-auto flex items-center gap-2 px-6 py-3 text-xl text-primary hover:text-primary/80 transition-all duration-300 font-medium"
+                className="mx-auto flex items-center gap-2 px-6 py-3 text-primary hover:text-primary/80 transition-all duration-300 font-medium"
             >
                 <span>More About Me</span>
                 <ChevronDown
@@ -59,19 +91,43 @@ export const MoreAboutMe = () => {
                                     index % 2 === 0 ? "md:flex-row-reverse" : ""
                                 )}
                             >
-                                {/* Image */}
+                                {/* Media (Image or Video) */}
                                 <div className="w-full md:w-1/3 flex-shrink-0">
-                                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg flex items-center justify-center">
-                                        {/* Replace with actual image */}
-                                        <img
-                                            src={section.image}
-                                            alt={section.title}
-                                            className="w-full h-full object-cover rounded-lg"
-                                            onError={(e) => {
-                                                e.target.style.display = 'none';
-                                                e.target.parentElement.innerHTML = '<span class="text-primary/60">Image</span>';
-                                            }}
-                                        />
+                                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/10 rounded-lg overflow-hidden relative group">
+                                        {section.type === "video" ? (
+                                            <>
+                                                <video
+                                                    className="w-full h-full object-cover"
+                                                    loop
+                                                    muted
+                                                    playsInline
+                                                    onClick={(e) => handleVideoClick(e.target, index)}
+                                                >
+                                                    <source src={section.media} type="video/mp4" />
+                                                    Your browser does not support video.
+                                                </video>
+                                                {/* Play/Pause overlay */}
+                                                <button
+                                                    className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
+                                                    onClick={(e) => {
+                                                        const video = e.currentTarget.previousElementSibling;
+                                                        handleVideoClick(video, index);
+                                                    }}
+                                                >
+                                                    {playingVideo === index ? (
+                                                        <Pause className="w-12 h-12 text-white/80" />
+                                                    ) : (
+                                                        <Play className="w-12 h-12 text-white/80" />
+                                                    )}
+                                                </button>
+                                            </>
+                                        ) : (
+                                            <img
+                                                src={section.media}
+                                                alt={section.title}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        )}
                                     </div>
                                 </div>
 
