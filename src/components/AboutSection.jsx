@@ -1,4 +1,5 @@
 import { Puzzle, GitBranch, GraduationCap } from "lucide-react";
+import { MoreAboutMe } from "./MoreAboutMe";
 
 export const AboutSection = () => {
     return (
@@ -100,7 +101,7 @@ export const AboutSection = () => {
                     </div>
                 </div>
 
-
+                <MoreAboutMe />
 
             </div>
         </section>
