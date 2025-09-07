@@ -200,7 +200,7 @@
 
 @utility cloud-group {
   will-change: transform, opacity;
-
+}
 
 #root {
   max-width: 100%;
