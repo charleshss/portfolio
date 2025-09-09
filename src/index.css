@@ -114,8 +114,7 @@
     --primary-foreground: #FAFBFC;
     --border: #E2E8F0;
     --glow: rgba(59, 130, 246, 0.5);
-    
-    /* Skill confidence levels */
+   
     --skill-basic: #ef4444;
     --skill-comfortable: #f59e0b;
     --skill-confident: #10b981;
@@ -128,12 +127,12 @@
     --background: #05060D;
     --foreground: #E2E8F0;
     --card: #0A0C19;
+
     --primary: #FB923C;
     --primary-foreground: #05060D;
     --border: #222A3A;
     --glow: rgba(251, 146, 60, 0.5);
     
-    /* Skill confidence levels - lighter for dark mode */
     --skill-basic: #f87171;
     --skill-comfortable: #fbbf24;
     --skill-confident: #34d399;
@@ -217,7 +216,6 @@
   will-change: transform, opacity;
 }
 
-/* Skill card color utilities */
 @utility skill-basic {
   background-color: var(--skill-basic-bg);
   border: 1px solid var(--skill-basic);
