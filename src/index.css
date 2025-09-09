@@ -92,7 +92,7 @@
     100% {
       transform: translateX(0px) translateY(0px);
     }
-}
+  }
 
   @keyframes cloud-fade {
     0%, 100% {
@@ -114,6 +114,13 @@
     --primary-foreground: #FAFBFC;
     --border: #E2E8F0;
     --glow: rgba(59, 130, 246, 0.5);
+   
+    --skill-basic: #ef4444;
+    --skill-comfortable: #f59e0b;
+    --skill-confident: #10b981;
+    --skill-basic-bg: rgba(239, 68, 68, 0.2);
+    --skill-comfortable-bg: rgba(245, 158, 11, 0.2);
+    --skill-confident-bg: rgba(16, 185, 129, 0.2);
   }
   
   .dark {
@@ -125,6 +132,13 @@
     --primary-foreground: #05060D;
     --border: #222A3A;
     --glow: rgba(251, 146, 60, 0.5);
+    
+    --skill-basic: #f87171;
+    --skill-comfortable: #fbbf24;
+    --skill-confident: #34d399;
+    --skill-basic-bg: rgba(248, 113, 113, 0.15);
+    --skill-comfortable-bg: rgba(251, 191, 36, 0.15);
+    --skill-confident-bg: rgba(52, 211, 153, 0.15);
   }
 
   * {
@@ -200,6 +214,21 @@
 
 @utility cloud-group {
   will-change: transform, opacity;
+}
+
+@utility skill-basic {
+  background-color: var(--skill-basic-bg);
+  border: 1px solid var(--skill-basic);
+}
+
+@utility skill-comfortable {
+  background-color: var(--skill-comfortable-bg);
+  border: 1px solid var(--skill-comfortable);
+}
+
+@utility skill-confident {
+  background-color: var(--skill-confident-bg);
+  border: 1px solid var(--skill-confident);
 }
 
 #root {

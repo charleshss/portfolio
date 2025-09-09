@@ -17,7 +17,7 @@ export const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            setIsScrolled(window.screenY > 10);
+            setIsScrolled(window.scrollY > 10);
         };
 
         window.addEventListener("scroll", handleScroll);
@@ -25,13 +25,14 @@ export const Navbar = () => {
     }, []);
 
     return (
+        <>
         <nav
             className={cn(
-                "fixed w-full z-40 transition-all duration-300",
-                isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+                "fixed top-0 left-0 w-full z-40 transition-all duration-300",
+                isScrolled ? "bg-background/80 backdrop-blur-md shadow-xs" : ""
             )}
         >
-            <div className="container flex items-center justify-between">
+            <div className="container h-16 md:h-20 flex items-center justify-between">
                 <a
                     className="text-xl font-bold text-primary flex items-center"
                     href="#hero"
@@ -98,5 +99,8 @@ export const Navbar = () => {
                 </div>
             </div>
         </nav>
+        {/* Spacer to offset fixed navbar height */}
+        <div aria-hidden className="h-16 md:h-20" />
+        </>
     );
 };
