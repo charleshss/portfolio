@@ -37,6 +37,8 @@ export const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       className="p-2 rounded-full transition-all duration-300 hover:bg-primary/10 focus:outline-none hover:scale-110"
+      aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+      aria-pressed={isDarkMode}
     >
       <div className={`transition-transform duration-300 ${isTransitioning ? 'rotate-180 scale-110' : ''}`}>
         {isDarkMode ? (
