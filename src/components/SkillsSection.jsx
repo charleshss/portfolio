@@ -1,33 +1,62 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import LogoLoop from "./LogoLoop";
+import AnimatedList from "./AnimatedList";
+import {
+    siPython,
+    siScala,
+    siJavascript,
+    siTypescript,
+    siCplusplus,
+    siMysql,
+    siHtml5,
+    siCss,
+    siReact,
+    siDjango,
+    siNextdotjs,
+    siSanity,
+    siTailwindcss,
+    siGit,
+    siGithub,
+    siClaude,
+    siOpenai,
+    siGooglecloud,
+    siResend
+} from 'simple-icons';
 
 const skills = [
     // Languages
     { name: "Java", confidence: "comfortable", category: "languages" },
     { name: "Python", confidence: "confident", category: "languages" },
-    { name: "C++", confidence: "basic", category: "languages" },
+    { name: "C++", confidence: "comfortable", category: "languages" },
     { name: "Scala", confidence: "confident", category: "languages" },
     { name: "HTML/CSS", confidence: "comfortable", category: "languages" },
     { name: "JavaScript", confidence: "comfortable", category: "languages" },
-    { name: "TypeScript", confidence: "basic", category: "languages" },
-    { name: "Tailwind CSS", confidence: "basic", category: "languages" },
+    { name: "TypeScript", confidence: "comfortable", category: "languages" },
+    { name: "Tailwind CSS", confidence: "comfortable", category: "languages" },
     { name: "SQL", confidence: "basic", category: "languages" },
 
-    // Frameworks
+    // Frameworks & CMS
     { name: "React", confidence: "comfortable", category: "frameworks" },
+    { name: "Next.js", confidence: "comfortable", category: "frameworks" },
     { name: "Django", confidence: "comfortable", category: "frameworks" },
+    { name: "Sanity CMS", confidence: "comfortable", category: "frameworks" },
     { name: "JavaFX", confidence: "basic", category: "frameworks" },
     { name: "JQuery", confidence: "comfortable", category: "frameworks" },
 
-    // Tools
+    // Tools & Services
     { name: "Git/GitHub", confidence: "confident", category: "tools" },
     { name: "VS Code", confidence: "confident", category: "tools" },
+    { name: "Resend", confidence: "comfortable", category: "tools" },
+    { name: "Claude AI", confidence: "confident", category: "tools" },
+    { name: "ChatGPT", confidence: "confident", category: "tools" },
     { name: "Trello", confidence: "confident", category: "tools" },
     { name: "CI/CD pipelines", confidence: "confident", category: "tools" },
     { name: "JSON", confidence: "confident", category: "tools" },
     { name: "APIs", confidence: "confident", category: "tools" },
     { name: "Agile/SCRUM methodologies", confidence: "confident", category: "tools" },
     { name: "AWS services", confidence: "comfortable", category: "tools" },
+    { name: "Google Cloud", confidence: "comfortable", category: "tools" },
     { name: "Microsoft Entra ID", confidence: "basic", category: "tools" },
 
     //Soft Skills
@@ -42,10 +71,46 @@ const skills = [
 
 const categories = ["all", "languages", "frameworks", "tools", "soft skills"];
 
+const SimpleIcon = ({ icon }) => (
+    <span className="inline-flex items-center justify-center h-full w-full">
+        <svg
+            viewBox="0 0 24 24"
+            role="img"
+            aria-hidden="true"
+            className="h-[var(--logoloop-logoHeight)] w-auto fill-current">
+            <title>{icon.title}</title>
+            <path d={icon.path} />
+        </svg>
+    </span>
+);
+
 const confidenceLevels = [
     { name: "Basic", value: "basic", color: "var(--skill-basic)" },
     { name: "Comfortable", value: "comfortable", color: "var(--skill-comfortable)" },
     { name: "Confident", value: "confident", color: "var(--skill-confident)" }
+];
+
+// Tech stack logos with official icons for the LogoLoop component
+const techLogos = [
+    { node: <SimpleIcon icon={siPython} />, title: "Python", href: "https://www.python.org" },
+    { node: <SimpleIcon icon={siScala} />, title: "Scala", href: "https://www.scala-lang.org" },
+    { node: <SimpleIcon icon={siJavascript} />, title: "JavaScript", href: "https://developer.mozilla.org/docs/Web/JavaScript" },
+    { node: <SimpleIcon icon={siTypescript} />, title: "TypeScript", href: "https://www.typescriptlang.org" },
+    { node: <SimpleIcon icon={siCplusplus} />, title: "C++", href: "https://isocpp.org" },
+    { node: <SimpleIcon icon={siMysql} />, title: "SQL", href: "https://www.mysql.com" },
+    { node: <SimpleIcon icon={siHtml5} />, title: "HTML", href: "https://developer.mozilla.org/docs/Web/HTML" },
+    { node: <SimpleIcon icon={siCss} />, title: "CSS", href: "https://developer.mozilla.org/docs/Web/CSS" },
+    { node: <SimpleIcon icon={siReact} />, title: "React", href: "https://react.dev" },
+    { node: <SimpleIcon icon={siNextdotjs} />, title: "Next.js", href: "https://nextjs.org" },
+    { node: <SimpleIcon icon={siDjango} />, title: "Django", href: "https://www.djangoproject.com" },
+    { node: <SimpleIcon icon={siSanity} />, title: "Sanity", href: "https://www.sanity.io" },
+    { node: <SimpleIcon icon={siTailwindcss} />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
+    { node: <SimpleIcon icon={siGit} />, title: "Git", href: "https://git-scm.com" },
+    { node: <SimpleIcon icon={siGithub} />, title: "GitHub", href: "https://github.com" },
+    { node: <SimpleIcon icon={siClaude} />, title: "Claude", href: "https://claude.ai" },
+    { node: <SimpleIcon icon={siOpenai} />, title: "ChatGPT", href: "https://openai.com" },
+    { node: <SimpleIcon icon={siGooglecloud} />, title: "Google Cloud", href: "https://cloud.google.com" },
+    { node: <SimpleIcon icon={siResend} />, title: "Resend", href: "https://resend.com" }
 ];
 
 export const SkillsSection = () => {
@@ -64,30 +129,70 @@ export const SkillsSection = () => {
 
     const getSkillCardClasses = (confidence) => {
         return cn(
-            "p-6 rounded-lg shadow-xs card-hover transition-all duration-300",
-            confidence === "basic" && "skill-basic",
-            confidence === "comfortable" && "skill-comfortable",
-            confidence === "confident" && "skill-confident"
+            "relative p-6 rounded-xl shadow-lg transition-all duration-300 backdrop-blur-sm border-2 group overflow-hidden",
+            "hover:shadow-xl hover:-translate-y-1",
+            confidence === "basic" && "skill-basic hover:border-danger/60",
+            confidence === "comfortable" && "skill-comfortable hover:border-warning/60",
+            confidence === "confident" && "skill-confident hover:border-success/60"
         );
     };
 
     return (
-        <section id="skills" className="py-24 px-4 relative bg-secondary/30">
-            <div className="container mx-auto max-w-5xl">
+        <section id="skills" className="py-24 px-4 relative overflow-hidden">
+            {/* Vibrant background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent-secondary/5 pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(139,92,246,0.08),transparent_50%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(236,72,153,0.08),transparent_50%)] pointer-events-none" />
+
+            <div className="container mx-auto max-w-6xl relative z-10">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                    My <span className="text-primary"> Skills</span>
+                    My <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-accent-secondary">Skills</span>
                 </h2>
 
-                <div className="flex flex-wrap justify-center gap-4 mb-8">
+                {/* Animated Tech Stack LogoLoop */}
+                <div className="mb-16">
+                    <h3 className="text-xl font-semibold mb-8 text-center text-muted-foreground">
+                        Technologies I Work With
+                    </h3>
+                    <div className="relative max-w-6xl mx-auto">
+                        {/* Enhanced container with modern styling */}
+                        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-card/80 via-card/40 to-card/80 backdrop-blur-md border border-border/30 shadow-xl shadow-primary/5">
+                            {/* Subtle glow effect */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-accent-secondary/5 rounded-2xl" />
+
+                            {/* Logo loop container */}
+                            <div className="relative z-10 p-6">
+                                <LogoLoop
+                                    logos={techLogos}
+                                    speed={60}
+                                    direction="left"
+                                    logoHeight={48}
+                                    gap={32}
+                                    pauseOnHover={true}
+                                    fadeOut={true}
+                                    scaleOnHover={true}
+                                    ariaLabel="Technologies and tools I work with"
+                                    className="py-2"
+                                />
+                            </div>
+
+                            {/* Fade edges for smooth overflow */}
+                            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-card/80 to-transparent pointer-events-none z-20" />
+                            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-card/80 to-transparent pointer-events-none z-20" />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-4 mb-12">
                     {categories.map((category, key) => (
                         <button
                             key={key}
                             onClick={() => setActiveCategory(category)}
                             className={cn(
-                                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
+                                "px-6 py-3 rounded-full transition-all duration-300 capitalize font-medium",
                                 activeCategory === category
-                                    ? "bg-primary text-primary-foreground"
-                                    : "bg-secondary/70 text-foreground hover:bg-secondary"
+                                    ? "bg-gradient-to-r from-primary to-accent text-white shadow-lg shadow-primary/30 scale-105"
+                                    : "bg-card/80 backdrop-blur-sm border border-border/50 text-foreground hover:border-primary/50 hover:shadow-md hover:scale-105"
                             )}
                         >
                             {category}
@@ -119,14 +224,31 @@ export const SkillsSection = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {displaySkills.map((skill, key) => (
                         <div
-                            key={key}
-                            className={getSkillCardClasses(skill.confidence)}
+                            key={`${activeCategory}-${skill.name}`}
+                            className={cn(
+                                getSkillCardClasses(skill.confidence),
+                                "opacity-0 animate-fade-in transform translate-y-4"
+                            )}
+                            style={{
+                                animationDelay: `${key * 50}ms`,
+                                animationFillMode: 'forwards'
+                            }}
                         >
-                            <div className="text-left">
-                                <h3 className="font-semibold text-lg mb-2">{skill.name}</h3>
-                                <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-background/50 capitalize">
-                                    {skill.confidence}
-                                </span>
+                            {/* Shimmer effect on hover */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+
+                            <div className="text-left relative z-10">
+                                <h3 className="font-semibold text-lg mb-3">{skill.name}</h3>
+                                <div className="flex items-center justify-between">
+                                    <span className={cn(
+                                        "inline-block px-3 py-1.5 text-xs font-medium rounded-full capitalize",
+                                        skill.confidence === "basic" && "bg-danger/20 text-danger",
+                                        skill.confidence === "comfortable" && "bg-warning/20 text-warning",
+                                        skill.confidence === "confident" && "bg-success/20 text-success"
+                                    )}>
+                                        {skill.confidence}
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     ))}

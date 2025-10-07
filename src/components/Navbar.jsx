@@ -6,8 +6,8 @@ import { ThemeToggle } from "./ThemeToggle";
 const navItems = [
     { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
     { name: "Contact", href: "#contact" },
 ];
 
@@ -51,6 +51,7 @@ export const Navbar = () => {
                                 key={key}
                                 href={item.href}
                                 className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                                aria-label={`Navigate to ${item.name} section`}
                             >
                                 {item.name}
                             </a>
@@ -92,6 +93,7 @@ export const Navbar = () => {
                                     href={item.href}
                                     className="text-foreground/80 hover:text-primary transition-colors duration-300"
                                     onClick={() => setIsMenuOpen(false)}
+                                    aria-label={`Navigate to ${item.name} section`}
                                 >
                                     {item.name}
                                 </a>
