@@ -56,6 +56,8 @@ export const ProjectsSection = () => {
                                     alt={project.title}
                                     // could also be cover
                                     className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                                    loading="lazy"
+                                    decoding="async"
                                 />
                             </div>
 
