@@ -3,10 +3,53 @@ import { cn } from "@/lib/utils";
 import LogoLoop from "./LogoLoop";
 import { skills, categories, confidenceLevels, techStack } from "@/config/skills";
 import { skillsSection } from "@/config/content";
-import * as SimpleIcons from 'simple-icons';
+import {
+    siPython,
+    siScala,
+    siJavascript,
+    siTypescript,
+    siCplusplus,
+    siMysql,
+    siHtml5,
+    siCss,
+    siReact,
+    siNextdotjs,
+    siDjango,
+    siSanity,
+    siTailwindcss,
+    siGit,
+    siGithub,
+    siClaude,
+    siOpenai,
+    siGooglecloud,
+    siResend
+} from 'simple-icons';
+
+// Icon map for fast lookup
+const iconMap = {
+    siPython,
+    siScala,
+    siJavascript,
+    siTypescript,
+    siCplusplus,
+    siMysql,
+    siHtml5,
+    siCss,
+    siReact,
+    siNextdotjs,
+    siDjango,
+    siSanity,
+    siTailwindcss,
+    siGit,
+    siGithub,
+    siClaude,
+    siOpenai,
+    siGooglecloud,
+    siResend
+};
 
 const SimpleIcon = ({ iconName }) => {
-    const icon = SimpleIcons[iconName];
+    const icon = iconMap[iconName];
     if (!icon) return null;
 
     return (
