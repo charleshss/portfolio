@@ -163,7 +163,7 @@ This portfolio was initially inspired by PedroTech's tutorial ["Build a BEAUTIFU
 - Comprehensive accessibility improvements (WCAG AA compliance)
 - Centralised configuration system for maintainability
 - British English localisation
-- Advanced performance optimisations
+- Advanced performance optimisation
 - Security hardening
 - Custom design elements and interactions
 

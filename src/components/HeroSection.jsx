@@ -4,6 +4,8 @@ import FaultyTerminal from "./FaultyTerminal";
 import DecryptedText from "./DecryptedText";
 import DotGrid from "./DotGrid";
 import { useState, useEffect } from "react";
+import { personalInfo } from "@/config/personal";
+import { hero } from "@/config/content";
 
 export const HeroSection = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -65,12 +67,12 @@ export const HeroSection = () => {
             </div>
 
             {/* Content Container */}
-            <div className="container max-w-4xl mx-auto text-center z-10 relative">
+            <div className="container max-w-5xl mx-auto text-center z-10 relative px-4">
                 <div className="space-y-8">
                     {/* Title with DecryptedText Effect */}
                     <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
                         <DecryptedText
-                            text="Hi, I'm Charles Suddens-Spiers"
+                            text={`Hi, I'm ${personalInfo.name}`}
                             speed={50}
                             sequential={true}
                             revealDirection="start"
@@ -84,7 +86,7 @@ export const HeroSection = () => {
                     <div className="pt-4">
                         <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                             <DecryptedText
-                                text="Driven computer scientist eager to create impactful solutions by combining problem-solving skills, modern frameworks, and a user-centred approach."
+                                text={hero.description}
                                 speed={30}
                                 sequential={true}
                                 revealDirection="start"
@@ -98,11 +100,11 @@ export const HeroSection = () => {
                     {/* CTA Button */}
                     <div className="pt-8 opacity-0 animate-fade-in-delay-3">
                         <a
-                            href="#projects"
+                            href={hero.ctaHref}
                             className="cosmic-button inline-block"
                             aria-label="View my work section"
                         >
-                            View My Work
+                            {hero.ctaText}
                         </a>
                     </div>
                 </div>
@@ -115,7 +117,7 @@ export const HeroSection = () => {
                 "opacity-60 hover:opacity-100 transition-opacity duration-300",
                 "animate-fade-in-delay-4"
             )}>
-                <span className="text-sm text-muted-foreground">Scroll</span>
+                <span className="text-sm text-muted-foreground">{hero.scrollText}</span>
                 <ArrowDown className="h-5 w-5 text-muted-foreground animate-bounce" />
             </div>
         </section>

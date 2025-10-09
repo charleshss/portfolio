@@ -1,25 +1,23 @@
 /**
  * Content Configuration
- * Centralized storage for UI copy and content throughout the site
+ * Centralised storage for UI copy and content throughout the site
  */
 
 export const navigation = {
   items: [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" }
+    { name: "Home", href: "#hero" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Skills", href: "#skills" },
+    { name: "Contact", href: "#contact" }
   ]
 };
 
 export const hero = {
-  title: "Charles Suddens-Spiers",
-  subtitle: "Software Engineer",
+  description: "Driven computer scientist eager to create impactful solutions by combining problem-solving skills, modern frameworks, and a user-centred approach.",
   ctaText: "View My Work",
   ctaHref: "#projects",
-  ctaSecondaryText: "Get In Touch",
-  ctaSecondaryHref: "#contact"
+  scrollText: "Scroll"
 };
 
 export const about = {
@@ -28,9 +26,12 @@ export const about = {
   cardTitle: "Behind the Resume",
   collaborationTitle: "Collaboration in Practice",
   collaborationSubtitle: "What it feels like to work with me",
+  buttons: {
+    getInTouch: "Get In Touch",
+    downloadCV: "Download CV"
+  },
   cards: [
     {
-      id: 1,
       title: "Problem Solver",
       description:
         "I love transforming complex challenges into elegant, reliable outcomes. My favourite work happens where curiosity meets impact.",
@@ -39,7 +40,6 @@ export const about = {
       borderColor: "border-primary/30"
     },
     {
-      id: 2,
       title: "Collaborative Developer",
       description:
         "Strong communication, thoughtful code reviews, and pair programming help me build shared context and better products.",
@@ -48,7 +48,6 @@ export const about = {
       borderColor: "border-accent/30"
     },
     {
-      id: 3,
       title: "Continuous Learner",
       description:
         "I'm always expanding my toolkit—across accessibility, AI, and modern web craft—to sharpen my problem-solving lens.",
@@ -102,21 +101,15 @@ export const about = {
 export const projectsSection = {
   sectionTitle: "Featured",
   sectionTitleHighlight: "Projects",
-  subtitle: "A showcase of my recent work and contributions",
-  ctaText: "Check My Github",
-  ctaIcon: "ArrowRight"
+  subtitle: "Here are some of my recent projects. Each project was carefully crafted with attention to detail, performance, and user experience.",
+  ctaText: "Check My Github"
 };
 
 export const skillsSection = {
-  sectionTitle: "Skills &",
-  sectionTitleHighlight: "Technologies",
-  subtitle: "Technologies I work with and continuously learning",
-  techStackTitle: "Tech Stack I Use",
-  labels: {
-    basic: "Basic",
-    comfortable: "Comfortable",
-    confident: "Confident"
-  }
+  sectionTitle: "My",
+  sectionTitleHighlight: "Skills",
+  techStackTitle: "Technologies I Work With",
+  confidenceLevelsTitle: "Confidence Levels:"
 };
 
 export const contact = {
@@ -124,11 +117,9 @@ export const contact = {
   subtitle: "Have a project in mind or require an aspiring software developer? Feel free to reach out and send me a message.",
   emailLabel: "Email",
   locationLabel: "Location",
-  socialTitle: "Connect With Me",
-  contactButtonText: "Contact Me"
+  socialTitle: "Connect With Me"
 };
 
 export const footer = {
-  copyright: `© ${new Date().getFullYear()} Charles Suddens-Spiers. All rights reserved.`,
-  builtWith: "Built with React & Tailwind CSS"
+  copyright: `© ${new Date().getFullYear()} Charles Suddens-Spiers. All rights reserved.`
 };

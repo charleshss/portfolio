@@ -1,49 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Play, Pause } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { about } from "@/config/content";
 
 export const MoreAboutMe = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [playingVideo, setPlayingVideo] = useState(null);
     const videoRefs = useRef([]);
 
-    const sections = [
-        {
-            title: "What Drives Me",
-            description:
-                "My family, friends and loved ones have always supported my journey, and without them I could not have achieved any of this. I will always be grateful to them all.",
-            media: "me/family.jpg",
-            type: "image",
-        },
-        {
-            title: "Beyond the Code",
-            description:
-                "When I'm not debugging or learning new skills, you'll often find me gaming and unwinding with friends online, letting the world go by.",
-            media: "me/gaming.jpg",
-            type: "image",
-        },
-        {
-            title: "I Could Never Get Tired of This",
-            description:
-                "Another passion of mine is golf – one of the most frustrating yet rewarding sports. What fascinates me most is not only the nature you get to experience, but also the fact that even for the best players no two shots are ever the same. It is a never-ending game of problem-solving.",
-            media: "me/golf.mp4",
-            type: "video",
-        },
-        {
-            title: "Exploring My Environment",
-            description:
-                "Like a good AI agent, I enjoy exploring the world and experiencing different cultures, foods, and the excitement that travel has to offer.",
-            media: "me/travel.jpg",
-            type: "image",
-        },
-        {
-            title: "My Safe Space",
-            description:
-                "I have always loved the mountains, not just for their hikes and their beauty but for their sense of peace. When they are blanketed in snow and I have two skis under my feet, that is where I feel most at home – carving and exploring through this vast landscape.",
-            media: "me/ski.mp4",
-            type: "video",
-        },
-    ];
+    const sections = about.moreAboutMe.sections;
 
     const pauseAllVideos = () => {
         videoRefs.current.forEach(video => {
@@ -88,7 +53,7 @@ export const MoreAboutMe = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 className="mx-auto flex items-center gap-2 rounded-full border border-border/40 bg-card/40 px-7 py-3 text-sm font-semibold uppercase tracking-[0.35em] text-primary/80 backdrop-blur transition-all duration-300 hover:border-primary/40 hover:text-primary"
             >
-                <span>More About Me</span>
+                <span>{about.moreAboutMe.buttonText}</span>
                 <ChevronDown
                     className={cn(
                         "h-4 w-4 transition-transform duration-300",

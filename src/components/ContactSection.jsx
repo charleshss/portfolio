@@ -4,6 +4,8 @@ import {
     MapPin,
     Github,
 } from "lucide-react";
+import { personalInfo } from "@/config/personal";
+import { contact } from "@/config/content";
 
 export const ContactSection = () => {
 
@@ -16,11 +18,10 @@ export const ContactSection = () => {
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-                        Let's Connect
+                        {contact.sectionTitle}
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Have a project in mind or require an aspiring software developer?
-                        Feel free to reach out and send me a message.
+                        {contact.subtitle}
                     </p>
                 </div>
 
@@ -34,12 +35,12 @@ export const ContactSection = () => {
                                     <Mail className="h-6 w-6 text-primary" />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-1">Email</h4>
+                                    <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-1">{contact.emailLabel}</h4>
                                     <a
-                                        href="mailto:charlie.suddens-spiers@live.com"
+                                        href={`mailto:${personalInfo.email}`}
                                         className="text-foreground hover:text-primary transition-colors break-all"
                                     >
-                                        charlie.suddens-spiers@live.com
+                                        {personalInfo.email}
                                     </a>
                                 </div>
                             </div>
@@ -49,9 +50,9 @@ export const ContactSection = () => {
                                     <MapPin className="h-6 w-6 text-primary" />
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-1">Location</h4>
+                                    <h4 className="font-semibold text-sm uppercase tracking-wider text-muted-foreground mb-1">{contact.locationLabel}</h4>
                                     <p className="text-foreground">
-                                        London, United Kingdom
+                                        {personalInfo.location}
                                     </p>
                                 </div>
                             </div>
@@ -60,11 +61,11 @@ export const ContactSection = () => {
                         {/* Social Links */}
                         <div className="pt-8 border-t border-border/30">
                             <h4 className="font-semibold text-center mb-6 text-sm uppercase tracking-wider text-muted-foreground">
-                                Connect With Me
+                                {contact.socialTitle}
                             </h4>
                             <div className="flex justify-center gap-4">
                                 <a
-                                    href="https://www.linkedin.com/in/charles-suddens-spiers/"
+                                    href={personalInfo.social.linkedin}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="group p-4 rounded-xl border border-border/30 bg-background/40 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"
@@ -73,7 +74,7 @@ export const ContactSection = () => {
                                     <Linkedin className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
                                 </a>
                                 <a
-                                    href="https://github.com/charleshss"
+                                    href={personalInfo.social.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="group p-4 rounded-xl border border-border/30 bg-background/40 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10"

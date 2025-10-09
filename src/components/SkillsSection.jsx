@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import LogoLoop from "./LogoLoop";
-import AnimatedList from "./AnimatedList";
+import { skills, categories, confidenceLevels, techStack } from "@/config/skills";
+import { skillsSection } from "@/config/content";
 import {
     siPython,
     siScala,
@@ -12,8 +13,8 @@ import {
     siHtml5,
     siCss,
     siReact,
-    siDjango,
     siNextdotjs,
+    siDjango,
     siSanity,
     siTailwindcss,
     siGit,
@@ -24,94 +25,53 @@ import {
     siResend
 } from 'simple-icons';
 
-const skills = [
-    // Languages
-    { name: "Java", confidence: "comfortable", category: "languages" },
-    { name: "Python", confidence: "confident", category: "languages" },
-    { name: "C++", confidence: "comfortable", category: "languages" },
-    { name: "Scala", confidence: "confident", category: "languages" },
-    { name: "HTML/CSS", confidence: "comfortable", category: "languages" },
-    { name: "JavaScript", confidence: "comfortable", category: "languages" },
-    { name: "TypeScript", confidence: "comfortable", category: "languages" },
-    { name: "Tailwind CSS", confidence: "comfortable", category: "languages" },
-    { name: "SQL", confidence: "basic", category: "languages" },
+// Icon map for fast lookup
+const iconMap = {
+    siPython,
+    siScala,
+    siJavascript,
+    siTypescript,
+    siCplusplus,
+    siMysql,
+    siHtml5,
+    siCss,
+    siReact,
+    siNextdotjs,
+    siDjango,
+    siSanity,
+    siTailwindcss,
+    siGit,
+    siGithub,
+    siClaude,
+    siOpenai,
+    siGooglecloud,
+    siResend
+};
 
-    // Frameworks & CMS
-    { name: "React", confidence: "comfortable", category: "frameworks" },
-    { name: "Next.js", confidence: "comfortable", category: "frameworks" },
-    { name: "Django", confidence: "comfortable", category: "frameworks" },
-    { name: "Sanity CMS", confidence: "comfortable", category: "frameworks" },
-    { name: "JavaFX", confidence: "basic", category: "frameworks" },
-    { name: "JQuery", confidence: "comfortable", category: "frameworks" },
+const SimpleIcon = ({ iconName }) => {
+    const icon = iconMap[iconName];
+    if (!icon) return null;
 
-    // Tools & Services
-    { name: "Git/GitHub", confidence: "confident", category: "tools" },
-    { name: "VS Code", confidence: "confident", category: "tools" },
-    { name: "Resend", confidence: "comfortable", category: "tools" },
-    { name: "Claude AI", confidence: "confident", category: "tools" },
-    { name: "ChatGPT", confidence: "confident", category: "tools" },
-    { name: "Trello", confidence: "confident", category: "tools" },
-    { name: "CI/CD pipelines", confidence: "confident", category: "tools" },
-    { name: "JSON", confidence: "confident", category: "tools" },
-    { name: "APIs", confidence: "confident", category: "tools" },
-    { name: "Agile/SCRUM methodologies", confidence: "confident", category: "tools" },
-    { name: "AWS services", confidence: "comfortable", category: "tools" },
-    { name: "Google Cloud", confidence: "comfortable", category: "tools" },
-    { name: "Microsoft Entra ID", confidence: "basic", category: "tools" },
+    return (
+        <span className="inline-flex items-center justify-center h-full w-full">
+            <svg
+                viewBox="0 0 24 24"
+                role="img"
+                aria-hidden="true"
+                className="h-[var(--logoloop-logoHeight)] w-auto fill-current">
+                <title>{icon.title}</title>
+                <path d={icon.path} />
+            </svg>
+        </span>
+    );
+};
 
-    //Soft Skills
-    { name: "Communication", confidence: "confident", category: "soft skills" },
-    { name: "Teamwork", confidence: "confident", category: "soft skills" },
-    { name: "Problem-solving", confidence: "confident", category: "soft skills" },
-    { name: "Adaptability", confidence: "confident", category: "soft skills" },
-    { name: "Time management", confidence: "confident", category: "soft skills" },
-    { name: "Leadership", confidence: "comfortable", category: "soft skills" },
-    { name: "Resilience", confidence: "confident", category: "soft skills" },
-];
-
-const categories = ["all", "languages", "frameworks", "tools", "soft skills"];
-
-const SimpleIcon = ({ icon }) => (
-    <span className="inline-flex items-center justify-center h-full w-full">
-        <svg
-            viewBox="0 0 24 24"
-            role="img"
-            aria-hidden="true"
-            className="h-[var(--logoloop-logoHeight)] w-auto fill-current">
-            <title>{icon.title}</title>
-            <path d={icon.path} />
-        </svg>
-    </span>
-);
-
-const confidenceLevels = [
-    { name: "Basic", value: "basic", color: "var(--skill-basic)" },
-    { name: "Comfortable", value: "comfortable", color: "var(--skill-comfortable)" },
-    { name: "Confident", value: "confident", color: "var(--skill-confident)" }
-];
-
-// Tech stack logos with official icons for the LogoLoop component
-const techLogos = [
-    { node: <SimpleIcon icon={siPython} />, title: "Python", href: "https://www.python.org" },
-    { node: <SimpleIcon icon={siScala} />, title: "Scala", href: "https://www.scala-lang.org" },
-    { node: <SimpleIcon icon={siJavascript} />, title: "JavaScript", href: "https://developer.mozilla.org/docs/Web/JavaScript" },
-    { node: <SimpleIcon icon={siTypescript} />, title: "TypeScript", href: "https://www.typescriptlang.org" },
-    { node: <SimpleIcon icon={siCplusplus} />, title: "C++", href: "https://isocpp.org" },
-    { node: <SimpleIcon icon={siMysql} />, title: "SQL", href: "https://www.mysql.com" },
-    { node: <SimpleIcon icon={siHtml5} />, title: "HTML", href: "https://developer.mozilla.org/docs/Web/HTML" },
-    { node: <SimpleIcon icon={siCss} />, title: "CSS", href: "https://developer.mozilla.org/docs/Web/CSS" },
-    { node: <SimpleIcon icon={siReact} />, title: "React", href: "https://react.dev" },
-    { node: <SimpleIcon icon={siNextdotjs} />, title: "Next.js", href: "https://nextjs.org" },
-    { node: <SimpleIcon icon={siDjango} />, title: "Django", href: "https://www.djangoproject.com" },
-    { node: <SimpleIcon icon={siSanity} />, title: "Sanity", href: "https://www.sanity.io" },
-    { node: <SimpleIcon icon={siTailwindcss} />, title: "Tailwind CSS", href: "https://tailwindcss.com" },
-    { node: <SimpleIcon icon={siGit} />, title: "Git", href: "https://git-scm.com" },
-    { node: <SimpleIcon icon={siGithub} />, title: "GitHub", href: "https://github.com" },
-    { node: <SimpleIcon icon={siClaude} />, title: "Claude", href: "https://claude.ai" },
-    { node: <SimpleIcon icon={siOpenai} />, title: "ChatGPT", href: "https://openai.com" },
-    { node: <SimpleIcon icon={siGooglecloud} />, title: "Google Cloud", href: "https://cloud.google.com" },
-    { node: <SimpleIcon icon={siResend} />, title: "Resend", href: "https://resend.com" }
-];
+// Tech stack logos - using config data with SimpleIcon component
+const techLogos = techStack.map(tech => ({
+    node: <SimpleIcon iconName={tech.icon} />,
+    title: tech.name,
+    href: tech.href
+}));
 
 export const SkillsSection = () => {
     const [activeCategory, setActiveCategory] = useState("all");
@@ -146,13 +106,13 @@ export const SkillsSection = () => {
 
             <div className="container mx-auto max-w-6xl relative z-10">
                 <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                    My <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-accent-secondary">Skills</span>
+                    {skillsSection.sectionTitle} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-accent-secondary">{skillsSection.sectionTitleHighlight}</span>
                 </h2>
 
                 {/* Animated Tech Stack LogoLoop */}
                 <div className="mb-16">
                     <h3 className="text-xl font-semibold mb-8 text-center text-muted-foreground">
-                        Technologies I Work With
+                        {skillsSection.techStackTitle}
                     </h3>
                     <div className="relative max-w-6xl mx-auto">
                         {/* Enhanced container with modern styling */}
@@ -203,19 +163,19 @@ export const SkillsSection = () => {
                 {/* Confidence Level Key */}
                 <div className="flex flex-wrap justify-center gap-6 mb-12 p-4 bg-card/50 rounded-lg">
                     <div className="text-sm font-medium text-foreground mb-2 w-full text-center">
-                        Confidence Levels:
+                        {skillsSection.confidenceLevelsTitle}
                     </div>
-                    {confidenceLevels.map((level) => (
-                        <div key={level.value} className="flex items-center gap-2">
+                    {Object.entries(confidenceLevels).map(([key, meta]) => (
+                        <div key={key} className="flex items-center gap-2">
                             <div
                                 className="w-4 h-4 rounded-full border-2"
                                 style={{
-                                    backgroundColor: level.color,
-                                    borderColor: level.color
+                                    backgroundColor: meta.color,
+                                    borderColor: meta.color
                                 }}
                             />
                             <span className="text-sm font-medium capitalize">
-                                {level.name}
+                                {meta.label}
                             </span>
                         </div>
                     ))}
@@ -246,7 +206,7 @@ export const SkillsSection = () => {
                                         skill.confidence === "comfortable" && "bg-warning/20 text-warning",
                                         skill.confidence === "confident" && "bg-success/20 text-success"
                                     )}>
-                                        {skill.confidence}
+                                        {confidenceLevels[skill.confidence].label}
                                     </span>
                                 </div>
                             </div>

@@ -391,11 +391,14 @@ export default function FaultyTerminal({
     handleMouseMove
   ]);
 
+  // Filter out props that shouldn't be spread to DOM
+  const { secondaryTint, tertiaryTint, colorShift, ...domProps } = rest;
+
   return (
     <div
       ref={containerRef}
       className={`w-full h-full relative overflow-hidden ${className}`}
       style={style}
-      {...rest} />
+      {...domProps} />
   );
 }

@@ -1,6 +1,6 @@
 /**
  * Personal Information Configuration
- * Centralized storage for all personal data used across the portfolio
+ * Centralised storage for all personal data used across the portfolio
  */
 
 export const personalInfo = {
