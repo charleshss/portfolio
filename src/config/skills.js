@@ -1,76 +1,103 @@
 /**
  * Skills Configuration
- * Centralized storage for all skills and technologies
+ * Centralised storage for all skills and technologies
  */
 
-export const skillLevels = {
-  BASIC: "basic",
-  COMFORTABLE: "comfortable",
-  CONFIDENT: "confident"
+// Categories (machine-friendly values, human labels optional)
+export const skillCategories = {
+  ALL: "all",
+  LANGUAGES: "languages",
+  FRAMEWORKS: "frameworks",
+  TOOLS: "tools",
+  PRACTICES: "practices",   // optional: separates concepts like CI/CD, APIs
+  SOFT_SKILLS: "soft-skills",
 };
 
+// Order you want to show in the UI
+export const categories = [
+  skillCategories.ALL,
+  skillCategories.LANGUAGES,
+  skillCategories.FRAMEWORKS,
+  skillCategories.TOOLS,
+  skillCategories.PRACTICES,
+  skillCategories.SOFT_SKILLS,
+];
+
+// Confidence levels (single source of truth for colour and label)
+export const confidenceLevels = {
+  basic: { label: "Basic", color: "var(--skill-basic)" },
+  comfortable: { label: "Comfortable", color: "var(--skill-comfortable)" },
+  confident: { label: "Confident", color: "var(--skill-confident)" },
+};
+
+// Skills — easy to add/remove/edit
 export const skills = [
-  // Programming Languages
-  { name: "JavaScript", level: skillLevels.CONFIDENT },
-  { name: "TypeScript", level: skillLevels.CONFIDENT },
-  { name: "Python", level: skillLevels.CONFIDENT },
-  { name: "Java", level: skillLevels.COMFORTABLE },
-  { name: "C", level: skillLevels.COMFORTABLE },
-  { name: "HTML/CSS", level: skillLevels.CONFIDENT },
-  { name: "SQL", level: skillLevels.COMFORTABLE },
+  // Languages
+  { name: "Java", confidence: "comfortable", category: "languages" },
+  { name: "Python", confidence: "confident", category: "languages" },
+  { name: "C++", confidence: "comfortable", category: "languages" },
+  { name: "Scala", confidence: "confident", category: "languages" },
+  { name: "HTML", confidence: "comfortable", category: "languages" },
+  { name: "CSS", confidence: "comfortable", category: "languages" },
+  { name: "JavaScript", confidence: "comfortable", category: "languages" },
+  { name: "TypeScript", confidence: "comfortable", category: "languages" },
+  { name: "SQL", confidence: "basic", category: "languages" },
 
-  // Frameworks & Libraries
-  { name: "React", level: skillLevels.CONFIDENT },
-  { name: "Node.js", level: skillLevels.CONFIDENT },
-  { name: "Next.js", level: skillLevels.COMFORTABLE },
-  { name: "Express", level: skillLevels.COMFORTABLE },
-  { name: "Django", level: skillLevels.BASIC },
-  { name: "Flask", level: skillLevels.COMFORTABLE },
-  { name: "FastAPI", level: skillLevels.BASIC },
+  // Frameworks & CMS
+  { name: "React", confidence: "comfortable", category: "frameworks" },
+  { name: "Next.js", confidence: "comfortable", category: "frameworks" },
+  { name: "Django", confidence: "comfortable", category: "frameworks" },
+  { name: "Sanity CMS", confidence: "comfortable", category: "frameworks" },
+  { name: "JavaFX", confidence: "basic", category: "frameworks" },
+  { name: "jQuery", confidence: "comfortable", category: "frameworks" },
+  { name: "Tailwind CSS", confidence: "comfortable", category: "frameworks" },
 
-  // Tools & Technologies
-  { name: "Git", level: skillLevels.CONFIDENT },
-  { name: "Docker", level: skillLevels.COMFORTABLE },
-  { name: "AWS", level: skillLevels.BASIC },
-  { name: "PostgreSQL", level: skillLevels.COMFORTABLE },
-  { name: "MongoDB", level: skillLevels.COMFORTABLE },
-  { name: "Redis", level: skillLevels.BASIC },
+  // Tools & Services
+  { name: "Git/GitHub", confidence: "confident", category: "tools" },
+  { name: "VS Code", confidence: "confident", category: "tools" },
+  { name: "Resend", confidence: "comfortable", category: "tools" },
+  { name: "Claude AI", confidence: "confident", category: "tools" },
+  { name: "OpenAI (ChatGPT)", confidence: "confident", category: "tools" },
+  { name: "Trello", confidence: "confident", category: "tools" },
+  { name: "Google Cloud", confidence: "comfortable", category: "tools" },
+  { name: "AWS services", confidence: "comfortable", category: "tools" },
+  { name: "Microsoft Entra ID", confidence: "basic", category: "tools" },
 
-  // Concepts & Practices
-  { name: "REST APIs", level: skillLevels.CONFIDENT },
-  { name: "GraphQL", level: skillLevels.BASIC },
-  { name: "CI/CD", level: skillLevels.COMFORTABLE },
-  { name: "Testing", level: skillLevels.COMFORTABLE },
-  { name: "Agile", level: skillLevels.COMFORTABLE },
-  { name: "Accessibility", level: skillLevels.CONFIDENT },
-  { name: "Responsive Design", level: skillLevels.CONFIDENT },
+  // Practices (optional conceptual bucket)
+  { name: "CI/CD pipelines", confidence: "confident", category: "practices" },
+  { name: "APIs", confidence: "confident", category: "practices" },
+  { name: "JSON", confidence: "confident", category: "practices" },
+  { name: "Agile/SCRUM methodologies", confidence: "confident", category: "practices" },
 
-  // AI & Machine Learning
-  { name: "Machine Learning", level: skillLevels.COMFORTABLE },
-  { name: "NLP", level: skillLevels.COMFORTABLE },
-  { name: "TensorFlow", level: skillLevels.BASIC },
-  { name: "PyTorch", level: skillLevels.BASIC },
+  // Soft skills
+  { name: "Communication", confidence: "confident", category: "soft-skills" },
+  { name: "Teamwork", confidence: "confident", category: "soft-skills" },
+  { name: "Problem-solving", confidence: "confident", category: "soft-skills" },
+  { name: "Adaptability", confidence: "confident", category: "soft-skills" },
+  { name: "Time management", confidence: "confident", category: "soft-skills" },
+  { name: "Leadership", confidence: "comfortable", category: "soft-skills" },
+  { name: "Resilience", confidence: "confident", category: "soft-skills" },
 ];
 
 // Tech logos for the logo loop
 export const techStack = [
-  { name: "Python", icon: "siPython", color: "#3776AB" },
-  { name: "JavaScript", icon: "siJavascript", color: "#F7DF1E" },
-  { name: "TypeScript", icon: "siTypescript", color: "#3178C6" },
-  { name: "React", icon: "siReact", color: "#61DAFB" },
-  { name: "Node.js", icon: "siNodedotjs", color: "#339933" },
-  { name: "Next.js", icon: "siNextdotjs", color: "#000000" },
-  { name: "TailwindCSS", icon: "siTailwindcss", color: "#06B6D4" },
-  { name: "PostgreSQL", icon: "siPostgresql", color: "#4169E1" },
-  { name: "MongoDB", icon: "siMongodb", color: "#47A248" },
-  { name: "Docker", icon: "siDocker", color: "#2496ED" },
-  { name: "Git", icon: "siGit", color: "#F05032" },
-  { name: "GitHub", icon: "siGithub", color: "#181717" },
-  { name: "AWS", icon: "siAmazon", color: "#FF9900" },
-  { name: "FastAPI", icon: "siFastapi", color: "#009688" },
-  { name: "Flask", icon: "siFlask", color: "#000000" },
-  { name: "Java", icon: "siOracle", color: "#F80000" },
-  { name: "C", icon: "siC", color: "#A8B9CC" },
-  { name: "Linux", icon: "siLinux", color: "#FCC624" },
-  { name: "Firebase", icon: "siFirebase", color: "#FFCA28" }
+  { name: "Python", icon: "siPython", href: "https://www.python.org" },
+  { name: "Scala", icon: "siScala", href: "https://www.scala-lang.org" },
+  { name: "JavaScript", icon: "siJavascript", href: "https://developer.mozilla.org/docs/Web/JavaScript" },
+  { name: "TypeScript", icon: "siTypescript", href: "https://www.typescriptlang.org" },
+  { name: "C++", icon: "siCplusplus", href: "https://isocpp.org" },
+  { name: "SQL", icon: "siMysql", href: "https://www.mysql.com" },
+  { name: "HTML", icon: "siHtml5", href: "https://developer.mozilla.org/docs/Web/HTML" },
+  { name: "CSS", icon: "siCss", href: "https://developer.mozilla.org/docs/Web/CSS" },
+  { name: "React", icon: "siReact", href: "https://react.dev" },
+  { name: "Next.js", icon: "siNextdotjs", href: "https://nextjs.org" },
+  { name: "Django", icon: "siDjango", href: "https://www.djangoproject.com" },
+  { name: "Sanity", icon: "siSanity", href: "https://www.sanity.io" },
+  { name: "Tailwind CSS", icon: "siTailwindcss", href: "https://tailwindcss.com" },
+  { name: "Git", icon: "siGit", href: "https://git-scm.com" },
+  { name: "GitHub", icon: "siGithub", href: "https://github.com" },
+  { name: "Claude", icon: "siClaude", href: "https://claude.ai" },
+  { name: "ChatGPT", icon: "siOpenai", href: "https://openai.com" },
+  { name: "Google Cloud", icon: "siGooglecloud", href: "https://cloud.google.com" },
+  { name: "Resend", icon: "siResend", href: "https://resend.com" }
 ];

@@ -1,115 +1,131 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
-
-const projects = [
-    {
-        id: 1,
-        title: "Conversate",
-        description: "Real-time translation web app for North Yorkshire Council facilitating multilingual communication. Features speech-to-text, instant translation, text-to-speech, and PDF transcript generation. Built with React, TypeScript, and AWS services.",
-        image: 'projects/conversate.png',
-        tags: ["React", "Typescript", "AWS", "Accessible", "Group"],
-        demoUrl: "https://www.conversateapp.com",
-        githubUrl: "https://github.com/translation-nyc/nyc-translation-app",
-    },
-    {
-        id: 2,
-        title: "Interactive Visualisation",
-        description: "Data visualisation analysing Premier League teams' transfer spending vs performance. Features zoom/pan functionality, dynamic filtering, and detailed team statistics.",
-        image: "projects/pl-vis.png",
-        tags: ["Javascript", "D3.js", "Data Visualisation", "Interactive", "Solo"],
-        demoUrl: "https://charleshss.github.io/pl-performance-vs-spend/",
-        githubUrl: "https://github.com/charleshss/pl-performance-vs-spend",
-    },
-    {
-        id: 3,
-        title: "Digital Doctor",
-        description: "Developed a multilingual symptom-checking web application that integrated Healthily Smart Symptoms Checker API with Google Cloud Translate API, enabling support for 10+ languages while maintaining data security compliance",
-        image: "projects/doctor.png",
-        tags: ["Python", "Django", "APIs", "Accessible", "Solo"],
-        demoUrl: "https://www.linkedin.com/in/charles-suddens-spiers/details/education/1726762946592/single-media-viewer/?profileId=ACoAAD7fdcEBh9N4Otn2tZlqE5hrKxia07zgczY",
-        githubUrl: "https://github.com/charleshss/DigitalDoctor",
-    },
-];
+import { projects } from "@/config/projects";
+import { projectsSection } from "@/config/content";
+import { personalInfo } from "@/config/personal";
 
 export const ProjectsSection = () => {
-    return (
-        <section id="projects" className="py-24 px-4 relative">
-            <div className="container mx-auto max-w-5xl">
-                <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-                    {" "}
-                    Featured <span className="text-primary"> Projects </span>
-                </h2>
+  return (
+    <section
+      id="projects"
+      className="relative bg-[var(--color-bg)] py-24 px-4"
+    >
+      <div className="mx-auto flex max-w-5xl flex-col gap-16">
+        <header className="text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-[var(--color-text)] md:text-4xl">
+            {projectsSection.sectionTitle}{" "}
+            <span className="text-[var(--color-accent)]">
+              {projectsSection.sectionTitleHighlight}
+            </span>
+          </h2>
+          <p className="mt-4 mx-auto max-w-2xl text-base leading-relaxed text-[var(--color-text-muted)]">
+            {projectsSection.subtitle}
+          </p>
+        </header>
 
-                <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-                    Here are some of my recent projects. Each project was carefully
-                    crafted with attention to detail, performance, and user experience.
-                </p>
+        <div className="grid gap-6 [grid-auto-rows:1fr] sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, index) => {
+            const hasDemo = Boolean(project.demoUrl);
+            const hasSource = Boolean(project.githubUrl);
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {projects.map((project, key) => (
-                        <div
-                            key={key}
-                            className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
-                        >
-                            <div className="h-48 overflow-hidden">
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    // could also be cover
-                                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
-                                    loading="lazy"
-                                    decoding="async"
-                                />
-                            </div>
-
-                            <div className="p-6">
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {project.tags.map((tag) => (
-                                        <span className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                <h3 className="text-xl font-semibold mb-1"> {project.title}</h3>
-                                <p className="text-muted-foreground text-sm mb-4">
-                                    {project.description}
-                                </p>
-                                <div className="flex justify-between items-center">
-                                    <div className="flex space-x-3">
-                                        <a
-                                            href={project.demoUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <ExternalLink size={20} />
-                                        </a>
-                                        <a
-                                            href={project.githubUrl}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                                        >
-                                            <Github size={20} />
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+            return (
+              <article
+                key={`project-${index}`}
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[var(--shadow-sm)] transition duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-[var(--shadow-md)] motion-safe:focus-within:-translate-y-0.5 focus-within:shadow-[var(--shadow-md)] motion-reduce:transition-none"
+              >
+                <div
+                  className="relative w-full overflow-hidden bg-[var(--color-surface-2)]"
+                  style={{ aspectRatio: "16 / 9" }}
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.03] motion-reduce:transition-none"
+                  />
                 </div>
 
-                <div className="text-center mt-12">
-                    <a
-                        className="cosmic-button w-fit flex items-center mx-auto gap-2"
+                <div className="flex flex-1 flex-col gap-5 px-6 py-5 text-[var(--color-text)]">
+                  <h3 className="text-lg font-semibold leading-snug">
+                    {project.title}
+                  </h3>
+
+                  {Array.isArray(project.description) ? (
+                    <ul className="space-y-2 text-left text-sm leading-relaxed text-[var(--color-text-muted)]">
+                      {project.description.map((point, pointIndex) => (
+                        <li key={pointIndex} className="flex gap-2">
+                          <span className="text-[var(--color-accent)]">•</span>
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p className="text-left text-sm leading-relaxed text-[var(--color-text-muted)]">
+                      {project.description}
+                    </p>
+                  )}
+
+                  <div
+                    className="mt-auto flex flex-wrap gap-2 text-xs"
+                    aria-label="Project tech stack"
+                  >
+                    {project.tags.map((tag, tagIndex) => (
+                      <span
+                        key={`tag-${index}-${tagIndex}`}
+                        className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface-2)] px-3 py-1 font-medium text-[var(--color-text)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {(hasDemo || hasSource) && (
+                  <footer className="mt-auto flex flex-wrap items-center gap-4 border-t border-[var(--color-border)] px-6 pb-6 pt-4">
+                    {hasDemo && (
+                      <a
+                        href={project.demoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="https://github.com/charleshss"
-                    >
-                        Check My Github <ArrowRight size={16} />
-                    </a>
-                </div>
-            </div>
-        </section>
-    );
+                        className="inline-flex min-h-[2.5rem] items-center gap-2 rounded-md px-2 py-2 text-sm font-medium text-[var(--color-text)] transition hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-surface)]"
+                        aria-label={`View ${project.title} live demo`}
+                      >
+                        <ExternalLink size={18} aria-hidden="true" />
+                        <span>Live Demo</span>
+                      </a>
+                    )}
+
+                    {hasSource && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex min-h-[2.5rem] items-center gap-2 rounded-md px-2 py-2 text-sm font-medium text-[var(--color-text)] transition hover:text-[var(--color-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring-focus)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-surface)]"
+                        aria-label={`View ${project.title} source code`}
+                      >
+                        <Github size={18} aria-hidden="true" />
+                        <span>Source</span>
+                      </a>
+                    )}
+                  </footer>
+                )}
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="flex justify-center">
+          <a
+            className="cosmic-button flex items-center gap-2"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={personalInfo.social.github}
+          >
+            {projectsSection.ctaText}
+            <ArrowRight size={16} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 };

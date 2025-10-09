@@ -1,4 +1,6 @@
 import { ArrowUp } from "lucide-react";
+import { personalInfo } from "@/config/personal";
+import { footer } from "@/config/content";
 
 export const Footer = () => {
     return (
@@ -6,11 +8,12 @@ export const Footer = () => {
             {" "}
             <p className="text-sm text-muted-foreground">
                 {" "}
-                &copy; {new Date().getFullYear()} Charles Suddens-Spiers All rights reserved.
+                {footer.copyright}
             </p>
             <a
                 href="#hero"
                 className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 text-primary transition-colors"
+                aria-label="Back to top"
             >
                 <ArrowUp size={20} />
             </a>
