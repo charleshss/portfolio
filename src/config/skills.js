@@ -41,7 +41,7 @@ export const skills = [
   { name: "CSS", confidence: "comfortable", category: "languages" },
   { name: "JavaScript", confidence: "comfortable", category: "languages" },
   { name: "TypeScript", confidence: "comfortable", category: "languages" },
-  { name: "SQL", confidence: "basic", category: "languages" },
+  { name: "SQL", confidence: "comfortable", category: "languages" },
 
   // Frameworks & CMS
   { name: "React", confidence: "comfortable", category: "frameworks" },
